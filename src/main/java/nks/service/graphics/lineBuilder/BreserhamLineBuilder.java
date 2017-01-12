@@ -74,7 +74,7 @@ public abstract class BreserhamLineBuilder implements LineBuilder {
 	}
 	
 	/**
-	 * This method create DependedCoordinate class and set necessary parameters  
+	 * This method create DependetCoordinate class and set necessary parameters  
 	 * @return
 	 */
 	protected abstract DependentCoordinate createDependentCoordinate();
