@@ -2,7 +2,7 @@ package nks.service.graphics.api;
 
 import java.util.List;
 
-import nks.service.graphics.raster.Point;
+import nks.service.graphics.Point;
 
 public interface GraphicsService {
 	List<Point> getLine(Point a, Point b);

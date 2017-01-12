@@ -1,18 +1,25 @@
-package nks.service.graphics.raster;
+package nks.service.graphics.lineBuilder;
 
-class HorizontalBreserhamLoop extends BreserhamLoop {
+import java.util.ArrayList;
+import java.util.List;
 
-	public HorizontalBreserhamLoop(Point start, Point end) {
+import nks.service.graphics.Point;
+
+class HorizontalBreserhamLineBuilder extends BreserhamLineBuilder {
+
+	public HorizontalBreserhamLineBuilder(Point start, Point end) {
 		super(start, end);
 	}
 
 
 	@Override
-	public void generateInitialPoints() {
+	public List<Point> generateInitialPoints() {
+		List<Point>pixels = new ArrayList<Point>();
 		for(int i = 0; i <= getHorizontalProjection(); ++i) {
 			int x = getStart().getX() + i;
-			getPixels().add(new Point(x, null));
+			pixels.add(Point.create(x, null));
 		}
+		return pixels;
 	}
 
 

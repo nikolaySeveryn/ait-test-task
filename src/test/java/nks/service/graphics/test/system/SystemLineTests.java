@@ -8,9 +8,9 @@ import java.util.List;
 
 import org.junit.Test;
 
+import nks.service.graphics.Point;
 import nks.service.graphics.api.GraphicsService;
 import nks.service.graphics.api.GraphicsServiceImpl;
-import nks.service.graphics.raster.Point;
 
 public class SystemLineTests {
 	

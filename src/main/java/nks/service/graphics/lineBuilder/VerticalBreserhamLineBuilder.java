@@ -1,8 +1,13 @@
-package nks.service.graphics.raster;
+package nks.service.graphics.lineBuilder;
 
-class VerticalBreserhamLoop extends BreserhamLoop {
+import java.util.ArrayList;
+import java.util.List;
 
-	public VerticalBreserhamLoop(Point start, Point end) {
+import nks.service.graphics.Point;
+
+class VerticalBreserhamLineBuilder extends BreserhamLineBuilder {
+
+	public VerticalBreserhamLineBuilder(Point start, Point end) {
 		super(start, end);
 	}
 
@@ -22,11 +27,13 @@ class VerticalBreserhamLoop extends BreserhamLoop {
 	}
 
 	@Override
-	public void generateInitialPoints() {
+	public List<Point> generateInitialPoints() {
+		List<Point>pixels = new ArrayList<Point>();
 		for(int i = 0; i <= getVerticalProjection(); ++i) {
 			int y = getStart().getY() + i;
-			getPixels().add(new Point(null, y));
+			pixels.add(Point.create(null, y));
 		}
+		return pixels;
 	}
 
 	@Override

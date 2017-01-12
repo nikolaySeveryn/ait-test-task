@@ -1,21 +1,28 @@
-package nks.service.graphics.raster;
+package nks.service.graphics.lineBuilder;
 
-public class DependentCoordinate {
+/**
+ * This class responds for incrementing dependent coordinate when error reach extremal value.
+ * Also it manages error value.
+ * 
+ * @author nks
+ *
+ */
+class DependentCoordinate {
 	
 	public enum Direction{
 		INCREASING,
 		DECREASING
 	}
 	
-	private Integer value;
+	private Integer coordinateValue;
 	private Integer error;
 	private Integer errorStep;
 	private Integer extremalError;
 	private Direction updatingDirection;
 	
-	public DependentCoordinate(Integer coordinate, Integer errorStep, Integer extremalError) {
+	public DependentCoordinate(Integer coordinateValue, Integer errorStep, Integer extremalError) {
 		super();
-		this.value = coordinate;
+		this.coordinateValue = coordinateValue;
 		this.errorStep = errorStep;
 		this.extremalError = extremalError;
 		
@@ -23,6 +30,7 @@ public class DependentCoordinate {
 	}
 	
 	public void findDirection(Integer start, Integer end){
+		//right order start and end coordinate was checked before
 		if(start <= end){
 			updatingDirection = Direction.INCREASING;
 		}
@@ -31,25 +39,21 @@ public class DependentCoordinate {
 		}
 	}
 	
-	public void increateError() {
-		error += errorStep;
-	}
 	
 	public void nextIteration() {
-		increateError();
+		error += errorStep;
 		if(2*error >= extremalError){
 			updateValue();
 			error -= extremalError;
 		}
 	}
 	
-	
-	public void updateValue(){
+	private void updateValue(){
 		if(Direction.INCREASING.equals(updatingDirection)) {
-			++value;
+			++coordinateValue;
 		}
 		else if(Direction.DECREASING.equals(updatingDirection)) {
-			--value;
+			--coordinateValue;
 		}
 		else {
 			throw new IllegalStateException("Undefined updating direction");
@@ -57,7 +61,7 @@ public class DependentCoordinate {
 	}
 	
 	
-	public Integer getValue(){
-		return value;
+	public Integer getCoordinateValue(){
+		return coordinateValue;
 	}
 }

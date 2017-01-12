@@ -1,4 +1,4 @@
-package nks.service.graphics.raster;
+package nks.service.graphics;
 
 public class Point {
 	private Integer x;
